@@ -1,0 +1,14 @@
+package com.manikanta.projects.lovable_backend.service;
+
+import com.manikanta.projects.lovable_backend.dto.member.InviteMemberRequest;
+import com.manikanta.projects.lovable_backend.dto.member.MemeberResponse;
+import org.jspecify.annotations.Nullable;
+
+import java.util.List;
+
+public interface ProjectMemberService {
+    MemeberResponse updateMemberRole(Long projectId, Long memberId, InviteMemberRequest request, Long userId);
+    List<MemeberResponse> getProjectMembers(Long projectId, Long userId);
+    MemeberResponse inviteMember(Long projectId, InviteMemberRequest request, Long userId);
+    MemeberResponse deleteProjectMember(Long projectId, Long memberId, Long userId);
+}
