@@ -3,8 +3,11 @@ package com.manikanta.projects.lovable_backend.controller;
 
 import com.manikanta.projects.lovable_backend.dto.member.InviteMemberRequest;
 import com.manikanta.projects.lovable_backend.dto.member.MemeberResponse;
+import com.manikanta.projects.lovable_backend.dto.member.UpdateMemberRoleRequest;
 import com.manikanta.projects.lovable_backend.service.ProjectMemberService;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +18,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/projects/{projectId}/members")
 @RequiredArgsConstructor
+@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class ProjectMemberController {
-    private final ProjectMemberService projectMemberService;
+    ProjectMemberService projectMemberService;
 
     @GetMapping
     public ResponseEntity<List<MemeberResponse>> getProjectMembers(@PathVariable Long projectId) {
@@ -34,7 +38,7 @@ public class ProjectMemberController {
     public ResponseEntity<MemeberResponse> updateMemberRole(
             @PathVariable Long projectId,
             @PathVariable Long memberId,
-            @RequestBody InviteMemberRequest request
+            @RequestBody UpdateMemberRoleRequest request
     ){
     return ResponseEntity.ok(projectMemberService.updateMemberRole(projectId,memberId,request,1L));
     }
