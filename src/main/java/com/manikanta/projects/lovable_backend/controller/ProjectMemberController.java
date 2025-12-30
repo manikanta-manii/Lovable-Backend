@@ -27,7 +27,7 @@ public class ProjectMemberController {
         return ResponseEntity.ok(projectMemberService.getProjectMembers(projectId, 1L));
     }
 
-    @GetMapping
+    @PostMapping
     public ResponseEntity<MemeberResponse> inviteMember(
             @PathVariable Long projectId,
             @RequestBody InviteMemberRequest request) {
