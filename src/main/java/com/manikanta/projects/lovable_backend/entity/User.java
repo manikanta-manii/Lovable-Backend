@@ -1,9 +1,10 @@
 package com.manikanta.projects.lovable_backend.entity;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 
@@ -11,14 +12,25 @@ import java.time.Instant;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
 @Setter
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Table(name = "users")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String avatarUrl;
     String name;
     String email;
     String passwordHash;
-    Instant createdAt; // or LocalDateTime createdAt
-    Instant updatedAt; // or LocalDateTime updatedAt
-    Instant deletedAt; // or LocalDateTime deletedAt // soft delete indicator
+
+    @CreationTimestamp
+    Instant createdAt;
+
+    @UpdateTimestamp
+    Instant updatedAt;
+    Instant deletedAt;
 }

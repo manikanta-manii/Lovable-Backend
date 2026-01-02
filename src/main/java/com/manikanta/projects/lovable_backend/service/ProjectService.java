@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface ProjectService {
     List<ProjectSummaryResponse> getUserProjects(Long userId);
-    ProjectResponse getUserProjectsById(Long projectId,Long userId);
-    ProjectSummaryResponse createProject(ProjectRequest request,Long userId);
-    ProjectResponse updateProject(Long id, ProjectRequest request, long l);
+    ProjectResponse getUserProjectById(Long projectId);
+    ProjectResponse createProject(ProjectRequest request,Long userId);
+    ProjectResponse updateProject(Long id, ProjectRequest request, Long userId);
     void softDeleteProject(Long id, Long userId);
 }

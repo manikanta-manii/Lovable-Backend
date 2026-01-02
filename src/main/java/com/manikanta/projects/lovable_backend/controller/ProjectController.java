@@ -29,11 +29,11 @@ public class ProjectController {
 
     @GetMapping("{id}")
     public ResponseEntity<ProjectResponse> getProjectById(@PathVariable Long id) {
-        return ResponseEntity.ok(projectService.getUserProjectsById(id,1L));
+        return ResponseEntity.ok(projectService.getUserProjectById(id));
     }
 
     @PostMapping
-    public ResponseEntity<ProjectSummaryResponse> createProject(@RequestBody ProjectRequest request) {
+    public ResponseEntity<ProjectResponse> createProject(@RequestBody ProjectRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(projectService.createProject(request,1L));
     }
 
